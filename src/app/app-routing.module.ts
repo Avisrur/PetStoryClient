@@ -1,7 +1,7 @@
-import {ExtraOptions, RouterModule, Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {LoginFormComponent} from './login-form/login-form.component';
-import {AuthGuard} from './@core/data/auth.guard';
+import {RegisterFormComponent} from './register-form/register-form.component';
 
 const routes: Routes = [
   // {path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule', canActivate: [AuthGuard]},
@@ -9,16 +9,14 @@ const routes: Routes = [
   //   path: 'auth',
   //   component: LoginFormComponent,
   // },
-  {path: '', component: LoginFormComponent, pathMatch: 'full'},
+  {path: ' ', redirectTo: '/login'},
+  {path: 'login', component: LoginFormComponent},
+  {path: 'register', component: RegisterFormComponent}
   // {path: '**', redirectTo: 'auth'}
 ];
 
-const config: ExtraOptions = {
-  useHash: true,
-};
-
 @NgModule({
-  imports: [RouterModule.forRoot(routes, config)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {
