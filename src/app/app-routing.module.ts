@@ -9,8 +9,7 @@ const routes: Routes = [
   //   path: 'auth',
   //   component: LoginFormComponent,
   // },
-  {path: ' ', redirectTo: '/login', pathMatch: 'full'},
-  {path: '**', redirectTo: '/login', pathMatch: 'full'},
+  {path: ' ', redirectTo: '/login'},
   {path: 'login', component: LoginFormComponent},
   {path: 'register', component: RegisterFormComponent}
   // {path: '**', redirectTo: 'auth'}

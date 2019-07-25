@@ -33,7 +33,7 @@
   </div>
   <div class="sign-up">
     <small class="form-text">
-      Don't have an account? <a routerLink="../register"><strong>Sign Up</strong></a>
+      Don't have an account? <a routerLink="/register"><strong>Sign Up</strong></a>
     </small>
   </div>
 </div> -->
@@ -60,7 +60,7 @@
 
     <div class="container">
       <div class="psw-wrapper">
-        <span class="psw">Forgot <a href="#">password?</a></span>
+        <span class="psw">Don't have an account? <a [routerLink]="['/register']" routerLinkActive="active"><strong>Sign Up</strong></a></span>
       </div>
     </div>
   </form>
