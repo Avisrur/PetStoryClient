@@ -16,9 +16,7 @@ export class LoginFormComponent implements OnInit {
   userZ: any = {};
   errors: string[] = [];
 
-  constructor(private http: HttpClient,
-              private user: UserService,
-              private router: Router) {
+  constructor() {
   }
 
   ngOnInit() {
@@ -30,13 +28,13 @@ export class LoginFormComponent implements OnInit {
       username: e.target.elements[0].value,
       password: e.target.elements[1].value
     };
-    this.http.post('localhost:3000/login', payload)
-      .subscribe(
-        data => {
-          this.user.setUserLoggedIn();
-          this.router.navigate(['home']);
-        },
-        err => alert(JSON.stringify(err.error))
-      );
+    // this.http.post('localhost:3000/login', payload)
+    //   .subscribe(
+    //     data => {
+    //       this.user.setUserLoggedIn();
+    //       this.router.navigate(['home']);
+    //     },
+    //     err => alert(JSON.stringify(err.error))
+    //   );
   }
 }
