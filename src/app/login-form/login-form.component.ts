@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {UsersService} from '../@core/data/users.service';
-import {TokenManagerService} from '../@core/data/token-manager.service';
 import {HttpClient} from '@angular/common/http';
+import {UserService} from '../@core/data/user.service';
+import {Router} from '@angular/router';
 
 // import {HttpClient} from '@angular/common/http';
 
@@ -17,7 +16,9 @@ export class LoginFormComponent implements OnInit {
   userZ: any = {};
   errors: string[] = [];
 
-  constructor() {
+  constructor(private http: HttpClient,
+              private user: UserService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -29,15 +30,13 @@ export class LoginFormComponent implements OnInit {
       username: e.target.elements[0].value,
       password: e.target.elements[1].value
     };
-  //   this.http.post('localhost:3000/login', payload)
-  //     .subscribe(
-  //       data => {
-  //         this.token.generateNewToken(data);
-  //         // this.user.setUserLoggedIn();
-  //         this.router.navigate(['pages/chat']);
-  //       },
-  //       err => alert(JSON.stringify(err.error))
-  //     );
-  // }  
+    this.http.post('localhost:3000/login', payload)
+      .subscribe(
+        data => {
+          this.user.setUserLoggedIn();
+          this.router.navigate(['home']);
+        },
+        err => alert(JSON.stringify(err.error))
+      );
   }
 }
