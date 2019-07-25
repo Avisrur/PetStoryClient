@@ -1,11 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-
+import {UsersService} from '../@core/data/users.service';
+import {TokenManagerService} from '../@core/data/token-manager.service';
 import {HttpClient} from '@angular/common/http';
+
+// import {HttpClient} from '@angular/common/http';
 
 
 @Component({
-  selector: 'app-login-form',
+  selector: 'app-root',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })
@@ -14,8 +17,7 @@ export class LoginFormComponent implements OnInit {
   userZ: any = {};
   errors: string[] = [];
 
-  constructor(private router: Router,
-              private http: HttpClient) {
+  constructor() {
   }
 
   ngOnInit() {
@@ -27,14 +29,14 @@ export class LoginFormComponent implements OnInit {
       username: e.target.elements[0].value,
       password: e.target.elements[1].value
     };
-    this.http.post('localhost:3000/login', payload)
-      .subscribe(
-        data => {
-          this.token.generateNewToken(data);
-          this.user.setUserLoggedIn();
-          this.router.navigate(['pages/chat']);
-        },
-        err => alert(JSON.stringify(err.error))
-      );
-  }
+  //   this.http.post('localhost:3000/login', payload)
+  //     .subscribe(
+  //       data => {
+  //         this.token.generateNewToken(data);
+  //         // this.user.setUserLoggedIn();
+  //         this.router.navigate(['pages/chat']);
+  //       },
+  //       err => alert(JSON.stringify(err.error))
+  //     );
+  // }
 }

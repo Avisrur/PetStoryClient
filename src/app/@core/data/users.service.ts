@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/internal/Observable';
+import {of} from 'rxjs/internal/observable/of';
 
 export class User {
   constructor(public id: string, public name: string) {
@@ -216,7 +217,9 @@ export class UsersService {
     }
   }
 
+  // tslint:disable-next-line:member-ordering member-ordering
   private userArray: any[];
+  // tslint:disable-next-line:member-ordering
   usersUrl = 'localhost:3000/users';
 
   constructor(private http: HttpClient) {
@@ -224,28 +227,30 @@ export class UsersService {
   }
 
   getUsers(): Observable<any> {
-    return Observable.of(this.users1);
+    return of(this.users1);
   }
 
-  getUsers1(): Observable<any> {
+  getUsers1() {
     return this.http.get(this.usersUrl);
   }
 
-  getUserById1(id): Observable<any> {
-    return this.http.get(this.usersUrl + id)
+  getUserById1(id) {
+    return this.http.get(this.usersUrl + id);
   }
 
   getUserArray(): Observable<any[]> {
-    return Observable.of(this.userArray);
+    return of(this.userArray);
   }
 
   getUser(): Observable<any> {
     counter = (counter + 1) % this.userArray.length;
-    return Observable.of(this.userArray[counter]);
+    return of(this.userArray[counter]);
   }
 
-  private isUserLoggedIn;
-  public username;
+  // tslint:disable-next-line:member-ordering
+  isUserLoggedIn;
+  // tslint:disable-next-line:member-ordering
+  username;
 
 
   setUserLoggedIn() {
