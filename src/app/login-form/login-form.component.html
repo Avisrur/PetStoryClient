@@ -40,19 +40,19 @@
 
 <div id="id01" class="modal">
 
-  <form class="modal-content animate" (submit)="loginUser($event)">
+  <form class="modal-content animate" #form="ngForm" (submit)="loginUser($event)">
     <div class="imgcontainer">
       <img src="../../assets/img_avatar2.png" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">
       <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <input type="text" [(ngModel)]="userToLogin.username" placeholder="Enter Username" name="uname" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input type="password" [(ngModel)]="userToLogin.password" placeholder="Enter Password" name="psw" required>
 
-      <button type="submit">Login</button>
+      <button type="submit" [disabled]="!form.valid">Login</button>
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
