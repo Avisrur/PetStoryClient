@@ -8,6 +8,8 @@ import {AppRoutingModule} from './app-routing.module';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import {HttpClientModule} from '@angular/common/http';
 import {UserService} from './@core/data/user.service';
+import { HomeComponent } from './pages/home/home.component';
+import {APP_BASE_HREF} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import {UserService} from './@core/data/user.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService,
+    {provide: APP_BASE_HREF, useValue: '/'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
