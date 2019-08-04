@@ -11,22 +11,23 @@ export class RegisterFormComponent implements OnInit {
 
   userToRegister: User = new User();
 
-  constructor() {
+  constructor(private service: UserService,
+              private router: Router) {
   }
 
   ngOnInit() {
   }
 
   registerUser() {
-    // this.service.registerUser(this.userToRegister)
-    //   .subscribe(data => {
-    //       console.log(data);
-    //       alert('Patient added successfully.');
-    //       this.router.navigate(['pages/patients']);
-    //     },
-    //     err => {
-    //       console.log(err);
-    //       alert('Something went wrong and the patient didn\'t register');
-    //     });
+    this.service.registerUser(this.userToRegister)
+      .subscribe(data => {
+          console.log(data);
+          alert('user registered successfully.');
+          this.router.navigate(['/login']);
+        },
+        err => {
+          console.log(err);
+          alert(err.error.message);
+        });
   }
 }

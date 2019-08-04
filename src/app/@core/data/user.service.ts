@@ -5,12 +5,12 @@ import {of} from 'rxjs/internal/observable/of';
 import {Pet} from './pet.service';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})
 };
 
 export class User {
   id?: string;
-  userName: string;
+  username: string;
   password: string;
   firstName?: string;
   lastName?: string;
@@ -24,9 +24,12 @@ export class User {
 @Injectable()
 export class UserService {
 
+  currentUser: User;
+  usersUrl = 'http://localhost:3000/users';
+
   data: User[] = [{
     id: 'avis',
-    userName: 'avis',
+    username: 'avis',
     password: '12345',
     firstName: 'Nadav',
     lastName: 'Avisrur',
@@ -36,7 +39,7 @@ export class UserService {
     pets: [{id: 'a'}]
   }, {
     id: 'lidor',
-    userName: 'lidor',
+    username: 'lidor',
     password: '12345',
     firstName: 'Lidor',
     lastName: 'Rosencovich',
@@ -45,9 +48,12 @@ export class UserService {
     picture: 'assets/images/old2.jpeg'
   }];
 
+  constructor(private http: HttpClient) {
+    this.isUserLoggedIn = false;
+  }
 
-  getData() {
-    return this.data;
+  getCurrentUser() {
+    return this.currentUser;
   }
 
   getUserById1(id) {
@@ -58,24 +64,22 @@ export class UserService {
     }
   }
 
-  // tslint:disable-next-line:member-ordering member-ordering
-  private userArray: User[];
-  // tslint:disable-next-line:member-ordering
-  usersUrl = 'localhost:3000/user';
-
-  constructor(private http: HttpClient) {
-    this.isUserLoggedIn = false;
-  }
 
   registerUser(body): Observable<User> {
     body = JSON.stringify(body);
-    return this.http.post<User>(this.usersUrl, body, httpOptions);
+    console.log(body);
+    return this.http.post<User>(this.usersUrl + '/register', body, httpOptions);
+  }
+
+  login(userToLogin: User) {
+    const body = JSON.stringify(userToLogin);
+    console.log(body);
+    return this.http.post<User>(this.usersUrl + '/login', body, httpOptions);
   }
 
   getUserById(id): Observable<User> {
     return this.http.get<User>(this.usersUrl + '/' + id);
   }
-
 
 
   // tslint:disable-next-line:member-ordering
@@ -96,4 +100,6 @@ export class UserService {
   getUserLoggedIn() {
     return this.isUserLoggedIn;
   }
+
+
 }

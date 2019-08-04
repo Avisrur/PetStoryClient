@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {UserService} from '../@core/data/user.service';
+import {User, UserService} from '../@core/data/user.service';
 import {Router} from '@angular/router';
 
 // import {HttpClient} from '@angular/common/http';
@@ -13,28 +13,29 @@ import {Router} from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
   showMessages: any = {};
-  userZ: any = {};
+  userToLogin: User = new User();
   errors: string[] = [];
 
-  constructor() {
+  userToRegister: User = new User();
+
+  constructor(private service: UserService,
+              private router: Router) {
   }
 
   ngOnInit() {
   }
 
-  loginUser(e) {
-    e.preventDefault();
-    const payload = {
-      username: e.target.elements[0].value,
-      password: e.target.elements[1].value
-    };
-    // this.http.post('localhost:3000/login', payload)
-    //   .subscribe(
-    //     data => {
-    //       this.user.setUserLoggedIn();
-    //       this.router.navigate(['home']);
-    //     },
-    //     err => alert(JSON.stringify(err.error))
-    //   );
+  loginUser() {
+    console.log(this.userToLogin);
+    this.service.login(this.userToLogin)
+      .subscribe(data => {
+          console.log(data);
+          alert('user logged in successfully.');
+          this.router.navigate(['/login']);
+        },
+        err => {
+          console.log(err);
+          alert(err.error.message);
+        });
   }
 }
