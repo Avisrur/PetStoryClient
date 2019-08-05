@@ -6,9 +6,10 @@ import { PagesComponent } from './pages.component';
 import {PagesRoutingModule} from './pages-routing.module';
 import {ProfileModule} from './profile/profile.module';
 import {HomeModule} from './home/home.module';
-import {PlacesModule} from './places/places.module';
+import {ParksModule} from './parks/parks.module';
 import {AdminModule} from './admin/admin.module';
 import {CommonModule} from '@angular/common';
+import {MatCardModule, MatIconModule, MatListModule, MatSidenavModule, MatTableModule, MatToolbarModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -20,8 +21,14 @@ import {CommonModule} from '@angular/common';
     PagesRoutingModule,
     ProfileModule,
     HomeModule,
-    PlacesModule,
-    AdminModule
+    ParksModule,
+    AdminModule,
+    MatSidenavModule,
+    MatListModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule
   ],
   providers: []
 })

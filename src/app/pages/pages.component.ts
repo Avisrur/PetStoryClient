@@ -15,26 +15,26 @@ export class PagesComponent implements OnInit {
       {
         name: 'Home',
         link: '/pages',
-        isActive: this.router.url === '/pages'
+        icon: 'home'
       },
       {
         name: 'My Profile',
         link: '/pages/profile',
-        isActive: false
+        icon: 'person'
       },
       {
-        name: 'Places',
-        link: '/pages/places',
-        isActive: false
+        name: 'Parks',
+        link: '/pages/parks',
+        icon: 'location_on'
       },
       {
         name: 'Admin',
         link: '/pages/admin',
-        isActive: false
+        icon: ''
       }, {
         name: 'About',
         link: '/pages',
-        isActive: false
+        icon: ''
       });
   }
 
