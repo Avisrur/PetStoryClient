@@ -1,3 +1,26 @@
-<p>
-  home works!
-</p>
+<h1 class="notification is-info">Your feed</h1>
+<div class="columns">
+  <a routerLink="addPost">
+    <button class="btn btn-primary btn-with-icon">
+      <i class="fa fa-plus"></i>
+      Add Post
+    </button>
+  </a>
+  <div class="column is-7">
+    <div *ngFor="let post of feed">
+      <div class="box">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>{{ post.username }}</strong>
+                <small>{{ post.timestamp }}</small> <br />
+                {{ post.postText }}
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>

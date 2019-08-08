@@ -29,7 +29,6 @@ import {MatCardModule, MatIconModule, MatListModule, MatSidenavModule, MatTableM
     MatToolbarModule,
     MatIconModule,
     MatCardModule
-  ],
-  providers: []
+  ]
 })
 export class PagesModule { }

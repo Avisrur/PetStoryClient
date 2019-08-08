@@ -8,7 +8,7 @@ const routes: Routes = [{
   component: PagesComponent,
   children: [{
     path: 'home',
-    component: HomeComponent,
+    loadChildren: './home/home.module#HomeModule',
   }, {
     path: 'profile',
     loadChildren: './profile/profile.module#ProfileModule',

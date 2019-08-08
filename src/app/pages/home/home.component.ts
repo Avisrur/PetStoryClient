@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Post} from './post';
+import {Subscription} from 'rxjs/internal/Subscription';
+import {FeedService} from '../../@core/data/feed.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public feed: Post[] = [];
+
+
+
+  constructor(private feedService: FeedService) {
+    this.feed = feedService.getPosts();
+  }
 
   ngOnInit() {
+    this.feed = this.feedService.getPosts();
   }
 
 }
