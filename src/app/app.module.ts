@@ -14,13 +14,15 @@ import {AuthGuard} from './@core/data/auth.guard';
 import {TokenManagerService} from './@core/data/token-manager.service';
 import {FeedService} from './@core/data/feed.service';
 import {PetService} from './@core/data/pet.service';
+import {FileSelectDirective} from 'ng2-file-upload';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

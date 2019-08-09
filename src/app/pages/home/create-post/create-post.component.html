@@ -10,7 +10,20 @@
         </div>
       </div>
 
-      <div><label>Message: </label></div>
+      <div><label>Post Title: </label></div>
+      <div>
+        <label>
+          <input
+            [(ngModel)]="postToCreate.postTitle"
+            rows="10"
+            cols="70"
+            [disabled]="isSending"
+            name="content"
+          />
+        </label>
+      </div>
+
+      <div><label>Post Text: </label></div>
       <div>
         <label>
           <input

@@ -18,7 +18,6 @@ export class CreatePostComponent implements OnInit {
   public infoMsg: string;
 
   postToCreate: Post = new Post();
-  feed: Post[] = [];
   currentUser: User;
 
   constructor(private feedService: FeedService,
@@ -27,7 +26,6 @@ export class CreatePostComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.feed = this.feedService.feed;
     this.currentUser = this.userService.getCurrentUser();
     this.postToCreate.setPostText('');
   }
@@ -37,6 +35,7 @@ export class CreatePostComponent implements OnInit {
     this.infoMsg = 'Processing your request.. Wait a minute';
     this.postToCreate.setUserId(this.currentUser._id);
     this.postToCreate.setUsername(this.currentUser.username);
+    this.postToCreate.setUserImage(this.currentUser.picture);
     this.postToCreate.createCurrentTimeStamp();
     console.log(this.postToCreate);
     this.feedService.createPost(this.postToCreate)
