@@ -13,26 +13,22 @@ const httpOptions = {
 })
 export class FeedService {
 
-  feed: Post[] = [];
-
-  constructor(private http: HttpClient) {
-    this.http.get<Post[]>(this.postsUrl).subscribe(feed => this.feed = feed);
-  }
-
   // tslint:disable-next-line:member-ordering
   postsUrl = 'http://localhost:3000/posts';
 
-
-  getPosts(): Post[] {
-    return this.feed;
+  constructor(private http: HttpClient) {
   }
+
+
+  initPosts() {
+    return this.http.get(this.postsUrl)
+  }
+
 
   createPost(body): Observable<Post> {
     body = JSON.stringify(body);
     console.log(body);
-    this.feed.push(body);
-    console.log(this.feed);
-    return this.http.post<Post>(this.postsUrl, body);
+    return this.http.post<Post>(this.postsUrl, body, httpOptions);
   }
 
 

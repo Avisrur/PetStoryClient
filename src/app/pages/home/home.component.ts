@@ -10,16 +10,15 @@ import {FeedService} from '../../@core/data/feed.service';
 })
 export class HomeComponent implements OnInit {
 
-  public feed: Post[] = [];
+  public feed: Array<Post>;
 
 
 
   constructor(private feedService: FeedService) {
-    this.feed = feedService.getPosts();
   }
 
   ngOnInit() {
-    this.feed = this.feedService.getPosts();
+    this.feedService.initPosts().subscribe(data => this.feed = data['posts']    );
   }
 
 }

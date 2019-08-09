@@ -22,10 +22,8 @@ export class LoginFormComponent implements OnInit {
   }
 
   loginUser() {
-    console.log(this.userToLogin);
     this.service.login(this.userToLogin)
       .subscribe(data => {
-          console.log(data);
           // this.token.generateNewToken(data);
           this.service.setCurrentUser(data);
           alert('user logged in successfully.');

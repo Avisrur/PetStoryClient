@@ -38,13 +38,11 @@ export class UserService {
 
   registerUser(body): Observable<User> {
     body = JSON.stringify(body);
-    console.log(body);
     return this.http.post<User>(this.usersUrl + '/register', body, httpOptions);
   }
 
   login(userToLogin: User) {
     const body = JSON.stringify(userToLogin);
-    console.log(body);
     return this.http.post<any>(this.usersUrl + '/login', body, httpOptions);
   }
 

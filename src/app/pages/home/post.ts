@@ -1,7 +1,9 @@
 export class Post {
   public id: string;
   public userId: string;
+  public userImage: string;
   public username: string;
+  public postTitle: string;
   public postImage: string;
   public postText: string;
   public timestamp: Date;
@@ -9,6 +11,11 @@ export class Post {
   setUserId(userId: string) {
     this.userId = userId;
   }
+
+  setUserImage(userImage: string) {
+    this.userImage = userImage;
+  }
+
   setUsername(username: string) {
     this.username = username;
   }
