@@ -13,12 +13,14 @@ export class HomeComponent implements OnInit {
   public feed: Array<Post>;
 
 
-
   constructor(private feedService: FeedService) {
   }
 
   ngOnInit() {
-    this.feedService.initPosts().subscribe(data => this.feed = data['posts']    );
+    this.feedService.getPosts().subscribe(data => {
+      console.log(data);
+      this.feed = data['posts']
+    });
   }
 
 }

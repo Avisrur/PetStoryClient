@@ -38,22 +38,7 @@ export class CreatePostComponent implements OnInit {
     this.postToCreate.setUserImage(this.currentUser.picture);
     this.postToCreate.createCurrentTimeStamp();
     console.log(this.postToCreate);
-    this.feedService.createPost(this.postToCreate)
-      .subscribe(data => {
-          this.infoMsg = 'Post successfully';
-          setTimeout(() => {
-            this.infoMsg = '';
-          }, 1000);
-
-          this.isSending = false;
-
-          console.log(data);
-          this.router.navigate(['pages/home']);
-        },
-        err => {
-          this.errorMsg = 'Something went wrong';
-          console.log(err);
-          // alert('Something went wrong and the sensor didn\'t register');
-        });
+    this.feedService.createPost(this.postToCreate);
+    this.router.navigate(['pages/home']);
   }
 }
