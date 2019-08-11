@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {Post} from '../../pages/home/post';
+import * as io from 'socket.io-client';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 const httpOptions = {
@@ -12,23 +11,23 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class FeedService {
-
-  // tslint:disable-next-line:member-ordering
+  postsUrlIO = 'http://localhost:3001';
   postsUrl = 'http://localhost:3000/posts';
+  private socket;
+
 
   constructor(private http: HttpClient) {
+    this.socket = io(this.postsUrlIO);
   }
 
 
-  initPosts() {
+  getPosts() {
     return this.http.get(this.postsUrl)
-  }
+  };
 
 
-  createPost(body): Observable<Post> {
-    body = JSON.stringify(body);
-    console.log(body);
-    return this.http.post<Post>(this.postsUrl, body, httpOptions);
+  createPost(post) {
+    this.socket.emit('new-post', post);
   }
 
 

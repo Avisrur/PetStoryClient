@@ -1,46 +1,74 @@
-<div class="columns">
-  <div class="column is-5">
-    <h3 class="notification">Create a new post</h3>
-    <div *ngIf="infoMsg" class="notification is-success">{{ infoMsg }}</div>
-    <div *ngIf="errorMsg" class="is-danger notification">{{ errorMsg }}</div>
-    <form>
-      <div class="field">
-        <label class="label">Title : {{currentUser.username}} </label>
-        <div class="control">
+<!--<div class="columns">-->
+<!--  <div class="column is-5">-->
+<!--    <h3 class="notification">Create a new post</h3>-->
+<!--    <div *ngIf="infoMsg" class="notification is-success">{{ infoMsg }}</div>-->
+<!--    <div *ngIf="errorMsg" class="is-danger notification">{{ errorMsg }}</div>-->
+<!--    <form>-->
+<!--      <div class="field">-->
+<!--        <label class="label">Title : {{currentUser.username}} </label>-->
+<!--        <div class="control">-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div><label>Post Text: </label></div>-->
+<!--      <div>-->
+<!--        <label>-->
+<!--          <input-->
+<!--            [(ngModel)]="postToCreate.postText"-->
+<!--            rows="10"-->
+<!--            cols="70"-->
+<!--            [disabled]="isSending"-->
+<!--            name="content"-->
+<!--          />-->
+<!--        </label>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
+
+<!--  <div class="is-7"></div>-->
+<!--</div>-->
+
+<div class="feed-container">
+  <mat-toolbar color="primary">
+
+    <span>Add Pet Story:</span>
+    <span class="example-spacer"></span>
+
+    <a routerLink="/">
+      <button class="btn btn-primary btn-with-icon">
+        <i class="fa fa-plus"></i>
+        Back to feed
+      </button>
+    </a>
+
+  </mat-toolbar>
+
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/profile.jpeg)'}"
+             class="example-header-image"></div>
+        <mat-card-title class="title">{{currentUser.username}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div><label>Post Text: </label></div>
+        <div>
+          <label>
+            <input
+              [(ngModel)]="postToCreate.postText"
+              rows="10"
+              cols="70"
+              [disabled]="isSending"
+              name="content"
+            />
+          </label>
         </div>
-      </div>
+      </mat-card-content>
+      <button (click)="submit()" class="button is-info" [disabled]="isSending">
+        Send
+      </button>
+    </mat-card>
 
-      <div><label>Post Title: </label></div>
-      <div>
-        <label>
-          <input
-            [(ngModel)]="postToCreate.postTitle"
-            rows="10"
-            cols="70"
-            [disabled]="isSending"
-            name="content"
-          />
-        </label>
-      </div>
-
-      <div><label>Post Text: </label></div>
-      <div>
-        <label>
-          <input
-            [(ngModel)]="postToCreate.postText"
-            rows="10"
-            cols="70"
-            [disabled]="isSending"
-            name="content"
-          />
-        </label>
-      </div>
-    </form>
-  </div>
-
-  <div class="is-7"></div>
 </div>
 
-<button (click)="submit()" class="button is-info" [disabled]="isSending">
-  Send
-</button>
+
+

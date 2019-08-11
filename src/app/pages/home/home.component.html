@@ -23,14 +23,14 @@
       <mat-list class="list-nav">
         <!--        <mat-list-item class="list-item" *ngFor="let source of mSources" (click)="searchArticles(source.id);sidenav.close();">-->
         <mat-list-item class="list-item" (click)="sidenav.close()">
-          <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/images/logo.png)'}"
+          <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/logo.png)'}"
                class="example-header-image"></div>
 
           <span class="source-name"> Stories</span>
 
         </mat-list-item>
         <mat-list-item class="list-item" (click)="sidenav.close()">
-          <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/images/logo.png)'}"
+          <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/logo.png)'}"
                class="example-header-image"></div>
 
           <span class="source-name"> Parks</span>
@@ -42,10 +42,10 @@
 
     <mat-card class="example-card" *ngFor="let post of feed">
       <mat-card-header>
-        <div mat-card-avatar [ngStyle]="{'background-image': 'url('+post.userImage+')'}"
+        <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/profile.jpeg)'}"
              class="example-header-image"></div>
-        <mat-card-title class="title">{{post.postTitle}}</mat-card-title>
-        <mat-card-subtitle>{{post.username}}</mat-card-subtitle>
+        <mat-card-title class="title">{{post.username}}</mat-card-title>
+        <mat-card-subtitle>{{post.timestamp}}</mat-card-subtitle>
       </mat-card-header>
       <img mat-card-image class="img-article" src={{post.postImage}} alt="">
       <mat-card-content>
