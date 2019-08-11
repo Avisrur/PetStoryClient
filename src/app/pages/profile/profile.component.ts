@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {User, UserService} from '../../@core/data/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  currentUser: User;
+
+  constructor(private service: UserService, private router: Router) { 
+    this.currentUser = this.service.getCurrentUser();
+  }
 
   ngOnInit() {
   }
 
+  registerPet() {
+    this.router.navigate(['/Pages/petRegistration']);
+  }
 }
