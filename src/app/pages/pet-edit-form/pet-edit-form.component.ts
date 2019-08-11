@@ -1,26 +1,29 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService, User} from '../../@core/data/user.service';
 import { PetService, Pet } from '../../@core/data/pet.service';
-import { FileUploadService } from '../../@core/data/file-upload.service';
-@Component({
-  selector: 'app-pet-register-form',
-  templateUrl: './pet-register-form.component.html',
-  styleUrls: ['./pet-register-form.component.css']
-})
-export class PetRegisterFormComponent implements OnInit {
+import { FileUploadService } from 'app/@core/data/file-upload.service';
+import { ActivatedRoute } from '@angular/router'
 
-  petToRegister: Pet = new Pet();
+@Component({
+  selector: 'app-pet-edit-form',
+  templateUrl: './pet-edit-form.component.html',
+  styleUrls: ['./pet-edit-form.component.css']
+})
+export class PetEditFormComponent implements OnInit {
+
+  petToEdit: any;
   currentUser: User;
   fileToUpload: File = null;
 
   constructor(private service: PetService,
               private userService: UserService,
               private router: Router,
+              private route: ActivatedRoute,
               private fileUploadService: FileUploadService) {
 
-                this.currentUser = userService.getCurrentUser();
-                this.petToRegister.userId = this.currentUser._id;
+                this.currentUser = this.userService.getCurrentUser();
+                this.petToEdit = this.router.getCurrentNavigation().extras.state;
   }
 
   ngOnInit() {
@@ -29,7 +32,7 @@ export class PetRegisterFormComponent implements OnInit {
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
     this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
-      this.petToRegister.image = data;
+      this.petToEdit.image = data;
       debugger;
 
       // do something, if upload success
@@ -38,12 +41,12 @@ export class PetRegisterFormComponent implements OnInit {
     });
   }
 
-  registerPet() {
-    this.service.registerPet(this.petToRegister)
+  editPet() {
+    this.service.editPet(this.petToEdit)
       .subscribe((data) => {
-        this.currentUser.pets.push(data);
+        //this.currentUser.pets.push(data);
         console.log(data);
-        alert('pet has been added successfully.');
+        alert('pet has been updated successfully.');
         this.router.navigate(['/pages']);
       },
       err => {

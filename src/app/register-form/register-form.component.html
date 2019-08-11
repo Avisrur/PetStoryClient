@@ -25,7 +25,9 @@
       <input type="text" [(ngModel)]="userToRegister.age" placeholder="Enter Age" name="age" required>
 
       <label for="picture"><b>Uploade a picture (not required)</b></label>
-      <input type="file" ng2FileSelect [(ngModel)]="userToRegister.picture" name="picture" required>
+      <input type="file"
+        id="file"
+        (change)="handleFileInput($event.target.files)" required>
       <button style="background:chocolate" type="submit">Register</button>
     </div>
 

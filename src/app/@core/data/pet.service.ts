@@ -9,7 +9,7 @@ const httpOptions = {
 };
 
 export class Pet {
-  id: string;
+  _id: string;
   name?: string;
   type?: string;
   image?: string;
@@ -42,5 +42,14 @@ export class PetService {
 
   getPetById(id): Observable<Pet> {
     return this.http.get<Pet>(this.petsUrl + '/' + id);
+  }
+
+  delete(id) {
+    return this.http.delete(this.petsUrl + '/' + id);
+  }
+
+  editPet(pet) {
+    const body = JSON.stringify(pet);
+    return this.http.put(this.petsUrl + '/' + pet._id, body, httpOptions);
   }
 }

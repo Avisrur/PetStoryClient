@@ -9,6 +9,15 @@
   margin-bottom: 10px;
 }
 
+.options {
+  margin-left: 5px;
+}
+
+.options button {
+  margin-top: 2px;
+  margin-left: 3px;
+}
+
 .pets-container {
   width: 100%;
 }
