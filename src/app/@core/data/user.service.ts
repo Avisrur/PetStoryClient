@@ -64,4 +64,8 @@ export class UserService {
     this.currentUser = user;
     this.isUserLoggedIn = true;
   }
+
+  deletePetFromUser(userId: string, petId: string) {
+    return this.http.delete<any>(this.usersUrl + '/user/' + userId + '/pet/' + petId );
+  }
 }
