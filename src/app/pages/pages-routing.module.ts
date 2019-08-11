@@ -13,6 +13,9 @@ const routes: Routes = [{
     path: 'profile',
     loadChildren: './profile/profile.module#ProfileModule',
   }, {
+    path: 'petRegistration',
+    loadChildren: './pet-register-form/pet-register-form.module#PetRegisterFormModule',
+  }, {
     path: 'parks',
     loadChildren: './parks/parks.module#ParksModule',
   }, {

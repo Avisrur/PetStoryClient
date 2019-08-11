@@ -1,0 +1,30 @@
+<div id="id01">
+
+    <form class="modal-content animate" (submit)="registerPet()">
+      <div class="imgcontainer">
+        <img src="../../assets/img_avatar2.png" alt="Avatar" class="avatar">
+      </div>
+  
+      <div class="container">
+        <label for="name"><b>Name</b></label>
+        <input type="text" [(ngModel)]="petToRegister.name" placeholder="Enter pet name" name="name" required>
+  
+        <label for="type"><b>Type</b></label>
+        <input type="text" [(ngModel)]="petToRegister.type" placeholder="Enter Type" name="type" required>
+  
+        <label for="picture"><b>Uploade a picture (not required)</b></label>
+        <!-- <input type="file" [(ngModel)]="petToRegister.picture" name="picture" required> -->
+        <input type="file"
+        id="file"
+        (change)="handleFileInput($event.target.files)">
+
+        <button style="background:chocolate" type="submit">Register</button>
+      </div>
+  
+      <div class="container">
+        <div class="psw-wrapper">
+          <span class="psw"><a [routerLink]="['/profile']" routerLinkActive="active"><strong>Back</strong></a></span>
+        </div>
+      </div>
+    </form>
+  </div>
