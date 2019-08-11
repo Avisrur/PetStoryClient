@@ -3,6 +3,11 @@ import { CommonModule } from '@angular/common';
 import {ParksComponent} from './parks.component';
 import {ParksRoutingModule} from './parks-routing.module';
 import {AgmCoreModule} from '@agm/core';
+import {MatTableModule} from '@angular/material';
+import {ParkService} from '../../@core/data/park.service';
+import { ParkTableComponent } from './park-table/park-table.component';
+import { ParkCreateComponent } from './park-create/park-create.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -11,10 +16,17 @@ import {AgmCoreModule} from '@agm/core';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAOmGxtu_r-QpPs6zhgX_ppWIlzDukQ2UM',
       libraries: ['places']
-    })
+    }),
+    MatTableModule,
+    FormsModule
   ],
   declarations: [
-    ParksComponent
+    ParksComponent,
+    ParkTableComponent,
+    ParkCreateComponent
+  ],
+  providers: [
+    ParkService
   ]
 })
 export class ParksModule {

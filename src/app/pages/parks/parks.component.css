@@ -1,3 +1,24 @@
 agm-map {
   height: 500px; /* height is required */
 }
+
+.gmap {
+  margin: auto;
+  width: 70%;
+  height: 400px;
+}
+
+.example-container {
+  height: 400px;
+  overflow: auto;
+}
+
+.tableBar {
+  margin: auto;
+  width: 80%;
+  display: block;
+}
+
+.floaty{
+  float: right;
+}

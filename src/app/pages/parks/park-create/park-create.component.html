@@ -1,0 +1,12 @@
+<form class="modal-content animate" (submit)="registerPark()">
+
+  <div class="container">
+    <label for="name"><b>Username</b></label>
+    <input type="text" [(ngModel)]="parkToRegister.name" placeholder="Enter name" name="name" required>
+
+    <label for="address"><b>Address</b></label>
+    <input type="text" [(ngModel)]="parkToRegister.address" placeholder="Enter address" name="address" required>\
+
+    <button style="background:chocolate" type="submit">Add park</button>
+  </div>
+</form>
