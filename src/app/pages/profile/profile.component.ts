@@ -14,18 +14,22 @@ import { Post } from '../home/post';
 export class ProfileComponent implements OnInit {
 
   currentUser: User;
-  feed: Array<Post>
+  visitedProfile: any = {};
+  feed: Array<Post>;
+  isVisiting: boolean;
 
   constructor(private service: UserService,
               private router: Router,
               private petService: PetService,
               private feedService: FeedService) { 
+    this.visitedProfile = this.router.getCurrentNavigation().extras.state;
     this.currentUser = this.service.getCurrentUser();
+    this.isVisiting = (this.visitedProfile && this.visitedProfile.username !== this.currentUser.username) ? true : false;
   }
 
   ngOnInit() {
     this.feedService.getPosts().subscribe(data => {
-      this.feed = data['posts'].filter(item => item.userId === this.currentUser._id);
+      this.feed = data['posts'].filter(item => item.userId === (this.visitedProfile ? this.visitedProfile._id : this.currentUser._id));
     });
   }
 

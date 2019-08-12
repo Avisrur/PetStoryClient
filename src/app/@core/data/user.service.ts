@@ -22,7 +22,6 @@ export class User {
 
 @Injectable()
 export class UserService {
-
   currentUser: User = new User();
   usersUrl = 'http://localhost:3000/users';
   isUserLoggedIn;
@@ -67,5 +66,9 @@ export class UserService {
 
   deletePetFromUser(userId: string, petId: string) {
     return this.http.delete<any>(this.usersUrl + '/user/' + userId + '/pet/' + petId );
+  }
+
+  getUserByAutoComplete(nameToSearch) {
+    return this.http.get(this.usersUrl + '/user/' + nameToSearch);
   }
 }

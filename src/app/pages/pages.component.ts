@@ -1,16 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnChanges} from '@angular/core';
 import {Router} from '@angular/router';
+import { User, UserService } from 'app/@core/data/user.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './pages.component.html',
   styleUrls: ['./pages.component.css']
 })
-export class PagesComponent implements OnInit {
+export class PagesComponent implements OnInit, OnChanges {
+  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
+    throw new Error("Method not implemented.");
+  }
 
   menuItems: any = [];
+  searchValue: string = "";
+  usersFromSearch: Array<User> = new Array<User>();
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private userService: UserService) {
     this.menuItems.push(
       {
         name: 'Home',
@@ -41,4 +48,13 @@ export class PagesComponent implements OnInit {
   ngOnInit() {
   }
 
+  updateUsersList() {
+    this.userService.getUserByAutoComplete(this.searchValue)
+      .subscribe(data => this.usersFromSearch = data['users'])
+  }
+
+  visitToProfile(user) {
+    this.usersFromSearch = [];
+    this.router.navigate(['/pages/profile'], {state: user});
+  }
 }
