@@ -32,7 +32,7 @@ export class PetService {
   registerPet(body): Observable<Pet> {
     body = JSON.stringify(body);
 
-    return this.http.post<Pet>(this.petsUrl + "/", body, httpOptions);
+    return this.http.post<Pet>(this.petsUrl, body, httpOptions);
   }
 
   addPetToUser(user: User, pet): Observable<Pet> {

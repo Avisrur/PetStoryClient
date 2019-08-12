@@ -9,10 +9,10 @@ import {Park} from '../../../@core/data/park.service';
 export class ParkTableComponent implements OnInit {
 
   @Output() markerMessage = new EventEmitter<string>();
-
-
+  @Output() editMode = new EventEmitter<Park>();
   @Input() savedParks: Array<Park>;
-  displayedColumns = ['name', 'address', 'likes', 'location on map'];
+
+  displayedColumns = ['name', 'address', 'likes', 'details', 'edit'];
 
 
   constructor() {;
@@ -23,7 +23,10 @@ export class ParkTableComponent implements OnInit {
   }
 
   getMarker(el: any) {
-    console.log(el);
     this.markerMessage.emit(el);
+  }
+
+  changeToEditMode(el: Park) {
+    this.editMode.emit(el);
   }
 }

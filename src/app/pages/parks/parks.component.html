@@ -34,14 +34,16 @@
 
 
 <div #gmap class="gmap"></div>
-<div *ngIf="!createMode" class="tableBar">
+<div *ngIf="!createMode && !editMode" class="tableBar">
   <div class="row">
     <label class="tableBar">List of park</label>
-    <button (click)="this.changeToCreateMode()" class="btn btn-primary btn-with-icon floaty">
+    <button (click)="this.changeToCreateMode(true)" class="btn btn-primary btn-with-icon floaty">
       <i class="fa fa-plus"></i>
       Add Park
     </button>
   </div>
-  <app-park-table [savedParks]="savedParks" (markerMessage)="getMarker($event)"></app-park-table>
+  <app-park-table [savedParks]="savedParks" (markerMessage)="getMarker($event)"
+                  (editMode)="changeToEditMode($event)"></app-park-table>
 </div>
-<app-park-create *ngIf="createMode"></app-park-create>
+<app-park-create *ngIf="createMode" (createMode)="changeToCreateMode($event)" ></app-park-create>
+<app-park-edit *ngIf="editMode" (editMode)="changeToUneditMode($event)" [parkToEdit]="parkToEdit" ></app-park-edit>

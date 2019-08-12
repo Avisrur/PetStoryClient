@@ -22,8 +22,8 @@ export class FeedService {
 
 
   getPosts() {
-    return this.http.get(this.postsUrl)
-  };
+    return this.http.get(this.postsUrl);
+  }
 
 
   createPost(post) {

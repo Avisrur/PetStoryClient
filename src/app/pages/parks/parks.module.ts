@@ -8,6 +8,7 @@ import {ParkService} from '../../@core/data/park.service';
 import { ParkTableComponent } from './park-table/park-table.component';
 import { ParkCreateComponent } from './park-create/park-create.component';
 import {FormsModule} from '@angular/forms';
+import { ParkEditComponent } from './park-edit/park-edit.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {FormsModule} from '@angular/forms';
   declarations: [
     ParksComponent,
     ParkTableComponent,
-    ParkCreateComponent
+    ParkCreateComponent,
+    ParkEditComponent
   ],
   providers: [
     ParkService

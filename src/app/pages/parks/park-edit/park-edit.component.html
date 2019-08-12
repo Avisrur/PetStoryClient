@@ -1,0 +1,12 @@
+<form class="modal-content animate" (submit)="updatePark()">
+
+  <div class="container">
+    <label for="name"><b>Park's Name</b></label>
+    <input type="text" [(ngModel)]="parkToEdit.name" placeholder="Enter name" name="name" required>
+
+    <label for="address"><b>Address</b></label>
+    <input type="text" [(ngModel)]="parkToEdit.address" placeholder="Enter address" name="address" required>
+
+    <button style="background:chocolate" type="submit">Update park</button>
+  </div>
+</form>
