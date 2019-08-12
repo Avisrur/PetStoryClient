@@ -13,10 +13,14 @@ export class Park {
   name?: string;
   address?: string;
   likes?: number;
+  timestamp?: Date;
 
   setLikes(number: number) {
     this.likes = number;
 
+  }
+  createCurrentTimeStamp() {
+    this.timestamp = new Date();
   }
 }
 

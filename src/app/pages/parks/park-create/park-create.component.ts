@@ -21,6 +21,7 @@ export class ParkCreateComponent implements OnInit {
 
   registerPark() {
     this.parkToRegister.setLikes(0);
+    this.parkToRegister.createCurrentTimeStamp();
     this.service.registerPark(this.parkToRegister)
       .subscribe((data) => {
           console.log(data);

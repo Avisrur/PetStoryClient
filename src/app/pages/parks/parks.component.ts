@@ -1,5 +1,4 @@
-import {Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
-import {MapsAPILoader, MouseEvent} from '@agm/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Park, ParkService} from '../../@core/data/park.service';
 import {Router} from '@angular/router';
 
