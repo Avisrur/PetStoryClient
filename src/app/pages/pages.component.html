@@ -47,6 +47,16 @@
       <mat-icon>menu</mat-icon>
     </button>
     <h1 class="example-app-name">Petstory</h1>
+    <form class="form-inline md-form" (change)="updateUsersList($event)">
+        <input class="form-control mr-sm-2" [(ngModel)]="searchValue" name="searchValue" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn aqua-gradient btn-rounded btn-sm my-0 btn-info" type="submit">Search</button>
+        <ul class="users-list" [hidden]="usersFromSearch.length === 0">
+          <li class="user-search-item" *ngFor="let user of usersFromSearch" (click)="visitToProfile(user)">
+            <img class="search-user-image" src="{{user.picture}}">
+            <span>{{user.firstName}} {{user.lastName}}</span>
+          </li>
+        </ul>
+      </form>
   </mat-toolbar>
 
   <mat-sidenav-container class="example-sidenav-container">

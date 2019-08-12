@@ -51,7 +51,7 @@
                      <div class="col-lg-12">
                         <div class="col-xs-12 col-sm-4">
                            <figure>
-                              <img class="img-circle img-responsive" alt="" src="{{currentUser.picture}}">
+                              <img class="img-circle img-responsive" alt="" src="{{(visitedProfile && visitedProfile.picture) || currentUser.picture}}">
                            </figure>
                            <div class="row">
                               <div class="col-xs-12 social-btns">
@@ -84,11 +84,11 @@
                         </div>
                         <div class="col-xs-12 col-sm-8">
                            <ul class="list-group">
-                              <li class="list-group-item">{{currentUser.firstName}} {{currentUser.lastName}}</li>
-                              <li class="list-group-item">{{currentUser.age}}</li>
-                              <li class="list-group-item">#friends: {{currentUser.friends ? currentUser.friends.length : 0}} </li>
-                              <li class="list-group-item"><i class="fa"></i> #pets: {{currentUser.pets ? currentUser.pets.length : 0}} </li>
-                              <li class="list-group-item"><i class="fa fa-envelope"></i> {{currentUser.email}}</li>
+                              <li class="list-group-item">{{visitedProfile ? visitedProfile.firstName + ' ' + visitedProfile.lastName : currentUser.firstName + ' ' + currentUser.lastName}}</li>
+                              <li class="list-group-item">{{(visitedProfile && visitedProfile.age) || currentUser.age}}</li>
+                              <li class="list-group-item">#friends: {{visitedProfile ? (visitedProfile.friends ? visitedProfile.friends.length : 0) : (currentUser.friends ? currentUser.friends.length : 0)}} </li>
+                              <li class="list-group-item"><i class="fa"></i> #pets: {{visitedProfile ? (visitedProfile.pets ? visitedProfile.pets.length : 0) : (currentUser.pets ? currentUser.pets.length : 0)}} </li>
+                              <li class="list-group-item"><i class="fa fa-envelope"></i> {{(visitedProfile && visitedProfile.email) || currentUser.email}}</li>
                            </ul>
                         </div>
                      </div>
@@ -96,13 +96,13 @@
                </div>
                <div class="bs-callout bs-callout-danger">
                   <div>
-                    <h4 style="float:left; margin-right: 8px;">Your Pets</h4>
-                    <button type="button" class="btn btn-secondary add-pets-btn" title="add new pet" [routerLink]="['/pages/petRegistration']" routerLinkActive="active">+</button>
+                    <h4 style="float:left; margin-right: 8px;">{{visitedProfile ? visitedProfile.firstName + '\'s' : 'Your'}} Pets</h4>
+                    <button [hidden]="isVisiting" type="button" class="btn btn-secondary add-pets-btn" title="add new pet" [routerLink]="['/pages/petRegistration']" routerLinkActive="active">+</button>
                   </div>
                   <div class="row">
                       <div class="pets-container">
                         <ul *ngIf="currentUser.pets.length > 0">
-                          <li *ngFor="let pet of currentUser.pets">
+                          <li *ngFor="let pet of visitedProfile ? visitedProfile.pets : currentUser.pets">
                             <div class="pet-container">
                                 <figure class="pet-image">
                                     <img class="img-circle img-responsive" alt="" src="{{pet.image}}">
@@ -111,7 +111,7 @@
                                     <li class="list-group-item">{{pet.name}}</li>
                                     <li class="list-group-item">{{pet.type}}</li>
                                 </ul>
-                                <div class="options">
+                                <div class="options" [hidden]="isVisiting">
                                  <button type="button" class="btn btn-danger" title="Remove pet" (click)="deletePet(pet._id)">remove</button>
                                  <button type="button" class="btn btn-info" title="Edit pet" (click)="navigateToEdit(pet)">edit</button>
                                 </div>

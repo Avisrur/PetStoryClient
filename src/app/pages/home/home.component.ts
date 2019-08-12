@@ -25,8 +25,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.feedService.getPosts().subscribe(data => {
       console.log(data);
-      this.postsList = data['posts'];
-      this.parksList = data['parks'];
+      this.postsList = data['posts'] || [];
+      this.parksList = data['parks'] || [];
       this.postsList.forEach(post => post['type'] = 'post');
       this.parksList.forEach(park => park['type'] = 'park');
       Array.prototype.push.apply(this.allPosts, this.postsList);
