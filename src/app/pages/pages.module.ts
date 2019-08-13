@@ -1,4 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -7,12 +6,8 @@ import {PagesRoutingModule} from './pages-routing.module';
 import {ProfileModule} from './profile/profile.module';
 import {HomeModule} from './home/home.module';
 import {ParksModule} from './parks/parks.module';
-import {AdminModule} from './admin/admin.module';
 import {CommonModule} from '@angular/common';
 import {MatCardModule, MatIconModule, MatListModule, MatSidenavModule, MatTableModule, MatToolbarModule} from '@angular/material';
-import { NearestParkComponent } from './home/nearest-park/nearest-park.component';
-import { WeatherComponent } from './home/weather/weather.component';
-import {AngularWeatherWidgetModule, WeatherApiName} from 'angular-weather-widget';
 
 @NgModule({
   declarations: [
@@ -25,7 +20,6 @@ import {AngularWeatherWidgetModule, WeatherApiName} from 'angular-weather-widget
     ProfileModule,
     HomeModule,
     ParksModule,
-    AdminModule,
     MatSidenavModule,
     MatListModule,
     MatTableModule,

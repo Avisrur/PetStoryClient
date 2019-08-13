@@ -16,9 +16,6 @@ const routes: Routes = [{
     path: 'parks',
     loadChildren: './parks/parks.module#ParksModule',
   }, {
-    path: 'admin',
-    loadChildren: './admin/admin.module#AdminModule',
-  }, {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
