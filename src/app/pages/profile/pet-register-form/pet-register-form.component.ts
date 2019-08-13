@@ -1,8 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {UserService, User} from '../../@core/data/user.service';
-import { PetService, Pet } from '../../@core/data/pet.service';
-import { FileUploadService } from '../../@core/data/file-upload.service';
+import {Pet, PetService} from '../../../@core/data/pet.service';
+import {User, UserService} from '../../../@core/data/user.service';
+import {FileUploadService} from '../../../@core/data/file-upload.service';
 @Component({
   selector: 'app-pet-register-form',
   templateUrl: './pet-register-form.component.html',
@@ -30,7 +30,6 @@ export class PetRegisterFormComponent implements OnInit {
     this.fileToUpload = files.item(0);
     this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
       this.petToRegister.image = data;
-      debugger;
 
       // do something, if upload success
     }, error => {

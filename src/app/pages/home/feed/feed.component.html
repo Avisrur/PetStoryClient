@@ -1,0 +1,111 @@
+
+<div class="feed-container">
+  <mat-toolbar color="primary">
+
+    <button mat-button (click)="sidenav.open()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{title}}</span>
+    <span class="example-spacer"></span>
+
+    <a routerLink="addPost">
+      <button class="btn btn-primary btn-with-icon">
+        <i class="fa fa-plus"></i>
+        Add Post
+      </button>
+    </a>
+
+  </mat-toolbar>
+
+
+  <mat-sidenav-container class="example-container">
+
+    <mat-sidenav #sidenav class="example-sidenav">
+      <mat-list class="list-nav">
+        <mat-list-item class="list-item" (click)="sidenav.close(); filterAllPosts();">
+          <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/logo.png)'}"
+               class="example-header-image"></div>
+
+          <span class="source-name"> All Posts</span>
+
+        </mat-list-item>
+        <mat-list-item class="list-item" (click)="sidenav.close();filterPostsByStories();">
+          <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/stories1.jpg)'}"
+               class="example-header-image"></div>
+
+          <span class="source-name"> Stories</span>
+
+        </mat-list-item>
+        <mat-list-item class="list-item" (click)="sidenav.close();filterPostsByParks();">
+          <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/park.jpeg)'}"
+               class="example-header-image"></div>
+
+          <span class="source-name"> Parks</span>
+
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+
+
+    <mat-card class="example-card" *ngFor="let post of feed">
+      <div *ngIf="post.type == 'post'">
+        <mat-card-header>
+          <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/profile.jpeg)'}"
+               class="example-header-image"></div>
+          <mat-card-title class="title">{{post.username}}</mat-card-title>
+          <mat-card-subtitle>{{post.timestamp.slice(0, -8).replace('T',' ')}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image class="img-article" src={{post.postImage}} alt="">
+        <mat-card-content>
+          <p>
+            {{post.postText}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions class="action-buttons">
+          <button mat-button color="primary">
+            <mat-icon>thumb_up_alt</mat-icon>
+            12 Likes
+          </button>
+          <button mat-button color="primary">
+            <mat-icon>comment</mat-icon>
+            Comments
+          </button>
+          <button mat-button color="primary">
+            <mat-icon>share</mat-icon>
+            Share
+          </button>
+        </mat-card-actions>
+      </div>
+      <div *ngIf="post.type == 'park'">
+        <mat-card-header>
+          <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/park.jpeg)'}"
+               class="example-header-image"></div>
+          <mat-card-title class="title">{{post.name}}</mat-card-title>
+          <mat-card-subtitle>{{post.hasOwnProperty('timestamp') ? post.timestamp.slice(0, -8).replace('T',' ') : ''}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            {{post.address}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions class="action-buttons">
+          <button mat-button color="primary">
+            <mat-icon>thumb_up_alt</mat-icon>
+            12 Likes
+          </button>
+          <button mat-button color="primary">
+            <mat-icon>comment</mat-icon>
+            Comments
+          </button>
+          <button mat-button color="primary">
+            <mat-icon>share</mat-icon>
+            Share
+          </button>
+        </mat-card-actions>
+      </div>
+    </mat-card>
+
+  </mat-sidenav-container>
+
+
+</div>

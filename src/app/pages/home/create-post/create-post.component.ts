@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {FeedService} from '../../../@core/data/feed.service';
 import {Post} from '../post';
 import {User, UserService} from '../../../@core/data/user.service';
+import {FileUploadService} from '../../../@core/data/file-upload.service';
 
 @Component({
   selector: 'app-create-post',
@@ -20,14 +21,28 @@ export class CreatePostComponent implements OnInit {
   postToCreate: Post = new Post();
   currentUser: User;
 
+  fileToUpload: File = null;
+
   constructor(private feedService: FeedService,
               private router: Router,
-              private userService: UserService) {
+              private userService: UserService,
+              private fileUploadService: FileUploadService) {
   }
 
   ngOnInit() {
     this.currentUser = this.userService.getCurrentUser();
     this.postToCreate.setPostText('');
+  }
+
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
+    this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
+      this.postToCreate.postImage = data;
+
+      // do something, if upload success
+    }, error => {
+      console.log(error);
+    });
   }
 
   submit() {

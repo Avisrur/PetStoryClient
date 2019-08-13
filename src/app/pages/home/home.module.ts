@@ -6,10 +6,11 @@ import {HomeRoutingModule} from './home-routing.module';
 import {FeedService} from '../../@core/data/feed.service';
 import {FormsModule} from '@angular/forms';
 import {MatCardModule, MatIconModule, MatListModule, MatMenuModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
-
-// import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';    trying to make feed real time
-
-// const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
+import {FileUploadService} from '../../@core/data/file-upload.service';
+import { FeedComponent } from './feed/feed.component';
+import {NearestParkComponent} from './nearest-park/nearest-park.component';
+import {WeatherComponent} from './weather/weather.component';
+import {AngularWeatherWidgetModule, WeatherApiName} from 'angular-weather-widget';
 
 @NgModule({
   imports: [
@@ -21,14 +22,22 @@ import {MatCardModule, MatIconModule, MatListModule, MatMenuModule, MatSidenavMo
     MatListModule,
     MatIconModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    AngularWeatherWidgetModule.forRoot({
+      baseUrl: '', key: '6b0748f06459e016838fef68b678e61b',
+      name: undefined
+    })
   ],
   declarations: [
     HomeComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    FeedComponent,
+    NearestParkComponent,
+    WeatherComponent
   ],
   providers: [
-    FeedService
+    FeedService,
+    FileUploadService
   ]
 })
 export class HomeModule {

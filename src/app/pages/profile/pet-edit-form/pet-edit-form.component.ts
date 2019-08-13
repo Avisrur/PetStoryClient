@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import {Router} from '@angular/router';
-import {UserService, User} from '../../@core/data/user.service';
-import { PetService, Pet } from '../../@core/data/pet.service';
 import { FileUploadService } from 'app/@core/data/file-upload.service';
 import { ActivatedRoute } from '@angular/router'
+import {User, UserService} from '../../../@core/data/user.service';
+import {PetService} from '../../../@core/data/pet.service';
 
 @Component({
   selector: 'app-pet-edit-form',
@@ -44,7 +44,6 @@ export class PetEditFormComponent implements OnInit {
   editPet() {
     this.service.editPet(this.petToEdit)
       .subscribe((data) => {
-        //this.currentUser.pets.push(data);
         console.log(data);
         alert('pet has been updated successfully.');
         this.router.navigate(['/pages']);
