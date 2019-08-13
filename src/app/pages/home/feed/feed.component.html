@@ -70,10 +70,10 @@
             <mat-icon>comment</mat-icon>
             Comments
           </button>
-          <button mat-button color="primary">
+          <<button mat-button color="primary">
             <mat-icon>share</mat-icon>
             Share
-          </button>
+          </button>>
         </mat-card-actions>
       </div>
       <div *ngIf="post.type == 'park'">
@@ -93,14 +93,7 @@
             <mat-icon>favorite</mat-icon>
             {{post.likes}}
           </button>
-          <button mat-button color="primary">
-            <mat-icon>comment</mat-icon>
-            Comments
-          </button>
-          <button mat-button color="primary">
-            <mat-icon>share</mat-icon>
-            Share
-          </button>
+          <fb-like url="https://www.google.com/maps/search/?api=1&query={{post.address}}"></fb-like>
         </mat-card-actions>
       </div>
     </mat-card>

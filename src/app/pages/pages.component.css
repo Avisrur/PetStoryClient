@@ -84,6 +84,7 @@ section .section-title {
 }
 #footer {
   background: darkslateblue !important;
+  margin-bottom: 15px;
 }
 #footer h5{
   padding-left: 10px;

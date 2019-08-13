@@ -19,14 +19,14 @@ export class WeatherComponent implements OnInit {
     scale: TemperatureScale.CELCIUS,
     backgroundColor: '#3f51b5',
     color: '#222222',
-    width: '300px',
-    height: '320px',
+    width: '100%',
+    height: '350px',
     showWind: true,
     showDetails: true,
     showForecast: true,
     forecastMode: ForecastMode.GRID,
     language: 'en',
-    layout: WeatherLayout.NARROW
+    layout: WeatherLayout.NARROW,
   };
 
   currentWeather: CurrentWeather = CURRENT_WATHER_MOCK;

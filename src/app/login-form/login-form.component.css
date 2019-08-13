@@ -10,13 +10,14 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-  background-color: #4CAF50;
+  background-color: steelblue;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin: 8px auto;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 80%;
+  display: block;
 }
 
 button:hover {
@@ -44,6 +45,7 @@ img.avatar {
 
 .container {
   padding: 16px;
+  width: 40%;
 }
 
 .container > .psw-wrapper {

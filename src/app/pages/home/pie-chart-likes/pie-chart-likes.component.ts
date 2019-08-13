@@ -29,7 +29,7 @@ export class PieChartLikesComponent implements AfterViewInit {
     this.service.getAllParks().subscribe(data => {
       this.pieData = data['parks'];
       this.pieData = this.pieData.filter((park) => {
-        return park.likes > 50;
+        return park.likes > 0;
       });
       this.setup();
       this.buildSVG();
@@ -38,22 +38,22 @@ export class PieChartLikesComponent implements AfterViewInit {
   }
 
   private setup(): void {
-    this.width = 250;
-    this.height = 250;
-    this.radius = Math.min(this.width, this.height) / 2;
+    this.width = 100;
+    this.height = 100;
+    this.radius = 40;
   }
 
   private buildSVG(): void {
     this.host.html('');
     this.svg = this.host.append('svg')
-      .attr('viewBox', `0 0 ${this.width} ${this.height}`)
+      .attr('viewBox', `0 17 ${this.width} ${this.height}`)
       .append('g')
       .attr('transform', `translate(${this.width / 2},${this.height / 2})`);
   }
 
   private buildPie(): void {
     const pie = D3.layout.pie();
-    const values = this.pieData.map(data => data.currentPopulation);
+    const values = this.pieData.map(data => data.likes);
     const arcSelection = this.svg.selectAll('.arc')
       .data(pie(values))
       .enter()

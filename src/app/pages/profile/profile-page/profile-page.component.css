@@ -4,6 +4,11 @@
 /* uses font awesome for social icons */
 @import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 
+.feed-wrapper {
+  height: 49vh;
+  overflow: auto;
+}
+
 .add-pets-btn {
   margin-top: -4px;
   margin-bottom: 10px;

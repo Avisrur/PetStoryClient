@@ -38,15 +38,15 @@ export class PieChartPopulationComponent implements AfterViewInit {
   }
 
   private setup(): void {
-    this.width = 250;
-    this.height = 250;
-    this.radius = Math.min(this.width, this.height) / 2;
+    this.width = 100;
+    this.height = 100;
+    this.radius = 40;
   }
 
   private buildSVG(): void {
     this.host.html('');
     this.svg = this.host.append('svg')
-      .attr('viewBox', `0 0 ${this.width} ${this.height}`)
+      .attr('viewBox', `0 17 ${this.width} ${this.height}`)
       .append('g')
       .attr('transform', `translate(${this.width / 2},${this.height / 2})`);
   }
