@@ -10,6 +10,9 @@ import {ParksModule} from './parks/parks.module';
 import {AdminModule} from './admin/admin.module';
 import {CommonModule} from '@angular/common';
 import {MatCardModule, MatIconModule, MatListModule, MatSidenavModule, MatTableModule, MatToolbarModule} from '@angular/material';
+import { NearestParkComponent } from './home/nearest-park/nearest-park.component';
+import { WeatherComponent } from './home/weather/weather.component';
+import {AngularWeatherWidgetModule, WeatherApiName} from 'angular-weather-widget';
 
 @NgModule({
   declarations: [

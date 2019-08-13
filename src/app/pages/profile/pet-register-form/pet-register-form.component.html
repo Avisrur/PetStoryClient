@@ -2,7 +2,7 @@
 
     <form class="modal-content animate" (submit)="registerPet()">
       <div class="imgcontainer">
-        <img src="../../assets/img_avatar2.png" alt="Avatar" class="avatar">
+        <img src="../../assets/pet-add.jpg" alt="Avatar" class="avatar">
       </div>
   
       <div class="container">
@@ -12,7 +12,7 @@
         <label for="type"><b>Type</b></label>
         <input type="text" [(ngModel)]="petToRegister.type" placeholder="Enter Type" name="type" required>
   
-        <label for="picture"><b>Uploade a picture (not required)</b></label>
+        <label for="picture"><b>Upload a picture (not required)</b></label>
         <!-- <input type="file" [(ngModel)]="petToRegister.picture" name="picture" required> -->
         <input type="file"
         id="file"
