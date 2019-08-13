@@ -7,7 +7,15 @@ import {ProfileModule} from './profile/profile.module';
 import {HomeModule} from './home/home.module';
 import {ParksModule} from './parks/parks.module';
 import {CommonModule} from '@angular/common';
-import {MatCardModule, MatIconModule, MatListModule, MatSidenavModule, MatTableModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatListModule,
+  MatSidenavModule,
+  MatTableModule,
+  MatToolbarModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -25,7 +33,8 @@ import {MatCardModule, MatIconModule, MatListModule, MatSidenavModule, MatTableM
     MatTableModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ]
 })
 export class PagesModule { }

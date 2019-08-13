@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Post} from '../post';
 import {Park} from '../../../@core/data/park.service';
 import {FeedService} from '../../../@core/data/feed.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-feed',
@@ -17,7 +18,8 @@ export class FeedComponent implements OnInit {
   public title: string;
 
 
-  constructor(private feedService: FeedService) {
+  constructor(private feedService: FeedService,
+              private router: Router) {
     this.title = 'All Posts';
     this.feedService.getPosts().subscribe(data => {
       console.log(data);
@@ -27,7 +29,7 @@ export class FeedComponent implements OnInit {
       this.parksList.forEach(park => park['type'] = 'park');
       Array.prototype.push.apply(this.allPosts, this.postsList);
       Array.prototype.push.apply(this.allPosts, this.parksList);
-      this.allPosts.sort(function(a, b) {
+      this.allPosts.sort(function (a, b) {
         // @ts-ignore
         return new Date(b.timestamp) - new Date(a.timestamp);
       });
@@ -55,5 +57,7 @@ export class FeedComponent implements OnInit {
 
   }
 
-
+  visitToProfile(userId: any) {
+    this.router.navigate(['/pages/profile'], {state: userId});
+  }
 }

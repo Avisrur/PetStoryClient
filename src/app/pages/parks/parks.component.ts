@@ -46,6 +46,10 @@ export class ParksComponent implements OnInit {
     this.geoCoder = new google.maps.Geocoder;
     this.service.getAllParks().subscribe(data => {
       this.savedParks = data['parks'];
+      // @ts-ignore
+      this.savedParks.sort((a, b) => {
+        return a.likes >= b.likes;
+      });
       const TA = {lat: 32.100768, lng: 34.811902};
       this.map = new google.maps.Map(this.gmapElement.nativeElement, {zoom: 12, center: TA, mapTypeId: google.maps.MapTypeId.ROADMAP});
       this.savedParks.forEach(park => {

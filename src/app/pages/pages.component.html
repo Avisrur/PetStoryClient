@@ -9,7 +9,7 @@
              aria-label="Search">
       <button class="btn aqua-gradient btn-rounded btn-sm my-0 btn-info" type="submit">Search</button>
       <ul class="users-list" [hidden]="usersFromSearch.length === 0">
-        <li class="user-search-item" *ngFor="let user of usersFromSearch" (click)="visitToProfile(user)">
+        <li class="user-search-item" *ngFor="let user of usersFromSearch" (click)="visitToProfile(user._id)">
           <img class="search-user-image" src="{{user.picture}}">
           <span>{{user.firstName}} {{user.lastName}}</span>
         </li>

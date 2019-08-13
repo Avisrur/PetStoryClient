@@ -483,6 +483,7 @@ form .form-group {
   border-width: 1px 1px 1px 5px;
   margin-bottom: 5px;
   padding: 20px;
+  background-color: #5bc0de;
 }
 .bs-callout:last-child {
   margin-bottom: 0px;
@@ -584,7 +585,12 @@ form .form-group {
   text-align: right;
 }
 
+mat-tab{
+  background-color: #20819e;
+}
 
-
+mat-tab-group{
+  background-color: #3b5998;
+}
 
 /**** resume ****/

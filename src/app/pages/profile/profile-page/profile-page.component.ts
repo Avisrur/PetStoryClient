@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User, UserService} from '../../../@core/data/user.service';
 import {Post} from '../../home/post';
 import {Router} from '@angular/router';
@@ -21,9 +21,17 @@ export class ProfilePageComponent implements OnInit {
               private router: Router,
               private petService: PetService,
               private feedService: FeedService) {
-    this.visitedProfile = this.router.getCurrentNavigation().extras.state;
-    this.currentUser = this.service.getCurrentUser();
-    this.isVisiting = (this.visitedProfile && this.visitedProfile.username !== this.currentUser.username) ? true : false;
+    if (this.router.getCurrentNavigation().extras.state) {
+      this.service.getUserById(this.router.getCurrentNavigation().extras.state).subscribe(user => {
+        this.visitedProfile = user;
+        this.currentUser = this.service.getCurrentUser();
+        this.isVisiting = (this.visitedProfile && this.visitedProfile.username !== this.currentUser.username) ? true : false;
+      });
+    } else {
+      this.visitedProfile = undefined;
+      this.currentUser = this.service.getCurrentUser();
+      this.isVisiting = (this.visitedProfile && this.visitedProfile.username !== this.currentUser.username) ? true : false;
+    }
   }
 
   ngOnInit() {
@@ -41,8 +49,8 @@ export class ProfilePageComponent implements OnInit {
       .subscribe(() => {
         this.service.deletePetFromUser(this.currentUser._id, id)
           .subscribe(() => {
-            for (let i = 0 ; i < this.currentUser.pets.length ; i++) {
-              if (this.currentUser.pets[i]._id === id){
+            for (let i = 0; i < this.currentUser.pets.length; i++) {
+              if (this.currentUser.pets[i]._id === id) {
                 this.currentUser.pets.splice(i, 1);
                 break;
               }

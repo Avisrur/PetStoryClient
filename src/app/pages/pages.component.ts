@@ -49,8 +49,8 @@ export class PagesComponent implements OnInit, OnChanges {
       .subscribe(data => this.usersFromSearch = data['users'])
   }
 
-  visitToProfile(user) {
+  visitToProfile(userId) {
     this.usersFromSearch = [];
-    this.router.navigate(['/pages/profile'], {state: user});
+    this.router.navigate(['/pages/profile'], {state: userId});
   }
 }

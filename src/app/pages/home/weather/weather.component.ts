@@ -20,7 +20,7 @@ export class WeatherComponent implements OnInit {
     backgroundColor: '#3f51b5',
     color: '#222222',
     width: '300px',
-    height: '400px',
+    height: '320px',
     showWind: true,
     showDetails: true,
     showForecast: true,
