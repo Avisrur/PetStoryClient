@@ -43,7 +43,7 @@ export class PetRegisterFormComponent implements OnInit {
         this.currentUser.pets.push(data);
         console.log(data);
         alert('pet has been added successfully.');
-        this.router.navigate(['/pages']);
+        this.router.navigate(['/pages/profile']);
       },
       err => {
         console.log(err);

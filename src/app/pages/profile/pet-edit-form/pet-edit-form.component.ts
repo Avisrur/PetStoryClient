@@ -46,7 +46,7 @@ export class PetEditFormComponent implements OnInit {
       .subscribe((data) => {
         console.log(data);
         alert('pet has been updated successfully.');
-        this.router.navigate(['/pages']);
+        this.router.navigate(['/pages/profile']);
       },
       err => {
         console.log(err);
