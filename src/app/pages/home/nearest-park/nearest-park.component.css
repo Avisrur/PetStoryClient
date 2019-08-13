@@ -1,0 +1,26 @@
+.gmap {
+  margin: auto;
+  width: 100%;
+  height: 200px;
+}
+
+.nearest-location{
+  margin:auto;
+  width: 100%;
+  height: 300px;
+  background-color: #4CAF50;
+}
+
+.all-parks-button{
+  margin:auto;
+}
+
+
+label {
+  color: rgba(0, 0, 0, 0.99);
+  font-weight: bold;
+  display: block;
+  width: 150px;
+  float: left;
+  font-size:20px;
+}

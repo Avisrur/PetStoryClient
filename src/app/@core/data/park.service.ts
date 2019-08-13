@@ -14,6 +14,7 @@ export class Park {
   address?: string;
   likes?: number;
   timestamp?: Date;
+  currentPopulation: number;
 
   setLikes(number: number) {
     this.likes = number;

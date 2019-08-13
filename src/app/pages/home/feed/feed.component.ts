@@ -19,9 +19,6 @@ export class FeedComponent implements OnInit {
 
   constructor(private feedService: FeedService) {
     this.title = 'All Posts';
-  }
-
-  ngOnInit() {
     this.feedService.getPosts().subscribe(data => {
       console.log(data);
       this.postsList = data['posts'] || [];
@@ -36,6 +33,10 @@ export class FeedComponent implements OnInit {
       });
       this.feed = this.allPosts;
     });
+  }
+
+  ngOnInit() {
+
   }
 
   filterAllPosts() {

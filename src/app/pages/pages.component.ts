@@ -33,6 +33,11 @@ export class PagesComponent implements OnInit, OnChanges {
         name: 'Parks',
         link: '/pages/parks',
         icon: 'location_on'
+      },
+      {
+        name: 'Logout',
+        link: '/',
+        icon: 'backspace'
       });
   }
 
