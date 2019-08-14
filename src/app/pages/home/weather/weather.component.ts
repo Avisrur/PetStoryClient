@@ -14,7 +14,7 @@ export class WeatherComponent implements OnInit {
 
   settings: WeatherSettings = {
     location: {
-      cityName: 'Tel Aviv'
+      cityName: 'Rishon Le Zion'
     },
     scale: TemperatureScale.CELCIUS,
     backgroundColor: '#3f51b5',
