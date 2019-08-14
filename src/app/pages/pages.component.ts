@@ -51,6 +51,10 @@ export class PagesComponent implements OnInit, OnChanges {
 
   visitToProfile(userId) {
     this.usersFromSearch = [];
-    this.router.navigate(['/pages/profile'], {state: userId});
+    if (this.userService.getCurrentUser()._id != userId) {
+      this.router.navigate(['/pages/profile', userId]);
+    } else {
+      this.router.navigate(['/pages/profile']);
+    }
   }
 }

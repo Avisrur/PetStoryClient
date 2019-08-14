@@ -9,7 +9,7 @@
             <div class="col-sm-3">
               <figure>
                 <img class="img-circle img-responsive" alt=""
-                     src="{{currentUser.picture}}">
+                     src="{{visitedProfile.picture}}">
               </figure>
               <div class="row">
                 <div class="col-xs-12 social-btns">
@@ -43,20 +43,22 @@
             <div class="col-sm-7">
               <ul class="list-group">
                 <li class="list-group-item">
-                  <b>Name:</b>{{currentUser.firstName + ' ' + currentUser.lastName}}
+                  <b>Name:</b>{{visitedProfile.firstName + ' ' + visitedProfile.lastName}}
                 </li>
-                <li class="list-group-item"><b>Age:</b>{{currentUser.age}}
+                <li class="list-group-item"><b>Age:</b>{{visitedProfile.age}}
                 </li>
                 <li class="list-group-item">
-                  <b>Friends:</b> {{currentUser.following ? currentUser.following.length : 0}}
+                  <b>Friends:</b> {{visitedProfile.following ? visitedProfile.following.length : 0}}
                 </li>
                 <li class="list-group-item"><i class="fa"></i>
-                  <b>Pets:</b> {{currentUser.pets ? currentUser.pets.length : 0}}
+                  <b>Pets:</b> {{visitedProfile.pets ? visitedProfile.pets.length : 0}}
                 </li>
                 <li class="list-group-item"><i
-                  class="fa fa-envelope"></i><b>Email:</b> {{currentUser.email}}
+                  class="fa fa-envelope"></i><b>Email:</b> {{visitedProfile.email}}
                 </li>
               </ul>
+              <button class="follow-button" type="submit"
+                      (click)="followOrUnfollow(visitedProfile._id)">{{follow}}</button>
             </div>
           </div>
         </div>
@@ -65,17 +67,14 @@
         <mat-tab label="Pets">
           <div class="bs-callout bs-callout-danger">
             <div>
-              <h4 style="float:left; margin-right: 8px;">{{'Your'}}
+              <h4 style="float:left; margin-right: 8px;">{{visitedProfile.firstName + '\'s'}}
                 Pets</h4>
-              <button type="button" class="btn btn-secondary add-pets-btn" title="add new pet"
-                      routerLink="/pages/profile/pets/add-pet" routerLinkActive="active">+
-              </button>
             </div>
 
             <div class="row">
               <div class="pets-container">
-                <ul *ngIf="currentUser.hasOwnProperty('pets') ? currentUser.pets.length > 0 : false">
-                  <li *ngFor="let pet of currentUser.pets">
+                <ul *ngIf="visitedProfile.hasOwnProperty('pets') ? visitedProfile.pets.length > 0: false">
+                  <li *ngFor="let pet of visitedProfile.pets">
                     <div class="pet-container">
                       <figure class="pet-image">
                         <img class="img-circle img-responsive" alt="" src="{{pet.image}}">
@@ -84,13 +83,6 @@
                         <li class="list-group-item">{{pet.name}}</li>
                         <li class="list-group-item">{{pet.type}}</li>
                       </ul>
-                      <div class="options">
-                        <button type="button" class="btn btn-danger" title="Remove pet" (click)="deletePet(pet._id)">
-                          remove
-                        </button>
-                        <button type="button" class="btn btn-info" title="Edit pet" (click)="navigateToEdit(pet)">edit
-                        </button>
-                      </div>
                     </div>
                   </li>
                 </ul>
@@ -134,11 +126,12 @@
           <div class="bs-callout bs-callout-danger">
             <div class="row">
               <div class="pets-container">
-                <ul *ngIf="currentUser.hasOwnProperty('following') ? currentUser.following.length > 0: false">
-                  <li *ngFor="let user of currentUser.following">
+                <ul *ngIf="visitedProfile.hasOwnProperty('following') ? visitedProfile.following.length > 0: false">
+                  <li *ngFor="let user of visitedProfile.following">
                     <div class="pet-container">
                       <figure class="friend-image">
-                        <img class="img-circle img-responsive" alt="" src="{{user.picture}}" (click)="goToProfile(user._id)">
+                        <img class="img-circle img-responsive" alt="" src="{{user.picture}}"
+                             (click)="goToProfile(user._id)">
                       </figure>
                       <ul class="list-group pet-details">
                         <li class="list-group-item">{{user.firstName}}</li>

@@ -16,6 +16,7 @@ import {PetEditFormComponent} from './pet-edit-form/pet-edit-form.component';
 import {FileUploadService} from '../../@core/data/file-upload.service';
 import {FormsModule} from '@angular/forms';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { VisitingProfileComponent } from './visiting-profile/visiting-profile.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     ProfileComponent,
     PetRegisterFormComponent,
     PetEditFormComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    VisitingProfileComponent
   ],
   providers: [
     FileUploadService

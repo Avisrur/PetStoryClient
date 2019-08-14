@@ -3,6 +3,7 @@ import {Post} from '../post';
 import {Park} from '../../../@core/data/park.service';
 import {FeedService} from '../../../@core/data/feed.service';
 import {Router} from '@angular/router';
+import {UserService} from '../../../@core/data/user.service';
 
 @Component({
   selector: 'app-feed',
@@ -19,7 +20,8 @@ export class FeedComponent implements OnInit {
 
 
   constructor(private feedService: FeedService,
-              private router: Router) {
+              private router: Router,
+              private userService: UserService) {
     this.title = 'All Posts';
     this.feedService.getPosts().subscribe(data => {
       console.log(data);
@@ -58,6 +60,10 @@ export class FeedComponent implements OnInit {
   }
 
   visitToProfile(userId: any) {
-    this.router.navigate(['/pages/profile'], {state: userId});
+    if (this.userService.getCurrentUser()._id != userId) {
+      this.router.navigate(['/pages/profile', userId]);
+    } else {
+      this.router.navigate(['/pages/profile'])
+    }
   }
 }

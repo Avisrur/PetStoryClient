@@ -29,7 +29,7 @@ export class PieChartLikesComponent implements AfterViewInit {
     this.service.getAllParks().subscribe(data => {
       this.pieData = data['parks'];
       this.pieData = this.pieData.filter((park) => {
-        return park.likes > 0;
+        return park.likes > 50;
       });
       this.setup();
       this.buildSVG();
