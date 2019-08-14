@@ -21,6 +21,7 @@ import {WeatherComponent} from './weather/weather.component';
 import {AngularWeatherWidgetModule, WeatherApiName} from 'angular-weather-widget';
 import {PieChartPopulationComponent} from './pie-chart-population/pie-chart-population.component';
 import {PieChartLikesComponent} from './pie-chart-likes/pie-chart-likes.component';
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import {PieChartLikesComponent} from './pie-chart-likes/pie-chart-likes.componen
       baseUrl: '', key: '6b0748f06459e016838fef68b678e61b',
       name: undefined
     }),
-    MatButtonModule
+    MatButtonModule,
+    JwSocialButtonsModule
   ],
   declarations: [
     HomeComponent,

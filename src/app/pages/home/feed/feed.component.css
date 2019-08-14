@@ -28,6 +28,11 @@
   border: 1px solid rgba(111, 111, 111, 0.50);
 }
 
+.feed-container > .example-container {
+  overflow: auto;
+  max-height: 82vh;
+}
+
 .example-sidenav-content {
   display: flex;
   height: 75%;
