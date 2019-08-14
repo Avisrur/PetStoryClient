@@ -31,7 +31,7 @@
 
 .feed-container > .example-container {
   overflow: auto;
-  max-height: 82vh;
+  max-height: 75vh;
 }
 
 .example-sidenav-content {
