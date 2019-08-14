@@ -6,8 +6,9 @@
   margin-top: 4px;
 }
 
-.example-header-image {
+.example-header-image-profile {
   background-size: cover;
+  cursor: pointer;
 }
 
 .title {

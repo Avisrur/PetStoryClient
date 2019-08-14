@@ -43,20 +43,22 @@
             <div class="col-sm-7">
               <ul class="list-group">
                 <li class="list-group-item">
-                  <b>Name:</b>{{visitedProfile ? visitedProfile.firstName + ' ' + visitedProfile.lastName : currentUser.firstName + ' ' + currentUser.lastName}}
+                  <b>Name:</b>{{isVisiting ? visitedProfile.firstName + ' ' + visitedProfile.lastName : currentUser.firstName + ' ' + currentUser.lastName}}
                 </li>
-                <li class="list-group-item"><b>Age:</b>{{(visitedProfile && visitedProfile.age) || currentUser.age}}
+                <li class="list-group-item"><b>Age:</b>{{isVisiting ? visitedProfile.age : currentUser.age}}
                 </li>
                 <li class="list-group-item">
-                  <b>Friends:</b> {{visitedProfile ? (visitedProfile.friends ? visitedProfile.friends.length : 0) : (currentUser.friends ? currentUser.friends.length : 0)}}
+                  <b>Friends:</b> {{isVisiting ? (visitedProfile.following ? visitedProfile.following.length : 0) : (currentUser.following ? currentUser.following.length : 0)}}
                 </li>
                 <li class="list-group-item"><i class="fa"></i>
-                  <b>Pets:</b> {{visitedProfile ? (visitedProfile.pets ? visitedProfile.pets.length : 0) : (currentUser.pets ? currentUser.pets.length : 0)}}
+                  <b>Pets:</b> {{isVisiting ? (visitedProfile.pets ? visitedProfile.pets.length : 0) : (currentUser.pets ? currentUser.pets.length : 0)}}
                 </li>
                 <li class="list-group-item"><i
-                  class="fa fa-envelope"></i><b>Email:</b> {{(visitedProfile && visitedProfile.email) || currentUser.email}}
+                  class="fa fa-envelope"></i><b>Email:</b> {{isVisiting ? visitedProfile.email : currentUser.email}}
                 </li>
               </ul>
+              <button *ngIf="isVisiting" class="follow-button" type="submit"
+                      (click)="followOrUnfollow(visitedProfile._id)">{{follow}}</button>
             </div>
           </div>
         </div>
@@ -65,7 +67,7 @@
         <mat-tab label="Pets">
           <div class="bs-callout bs-callout-danger">
             <div>
-              <h4 style="float:left; margin-right: 8px;">{{visitedProfile ? visitedProfile.firstName + '\'s' : 'Your'}}
+              <h4 style="float:left; margin-right: 8px;">{{isVisiting ? visitedProfile.firstName + '\'s' : 'Your'}}
                 Pets</h4>
               <button [hidden]="isVisiting" type="button" class="btn btn-secondary add-pets-btn" title="add new pet"
                       [routerLink]="['/pages/profile/add-pet']" routerLinkActive="active">+
@@ -74,8 +76,8 @@
 
             <div class="row">
               <div class="pets-container">
-                <ul *ngIf="currentUser.pets.length > 0">
-                  <li *ngFor="let pet of visitedProfile ? visitedProfile.pets : currentUser.pets">
+                <ul *ngIf="isVisiting ? visitedProfile.pets.length > 0 : currentUser.pets.length > 0">
+                  <li *ngFor="let pet of isVisiting ? visitedProfile.pets : currentUser.pets">
                     <div class="pet-container">
                       <figure class="pet-image">
                         <img class="img-circle img-responsive" alt="" src="{{pet.image}}">
@@ -130,7 +132,27 @@
             </mat-card>
           </div>
         </mat-tab>
-        <mat-tab label="Friends"> Content 3</mat-tab>
+        <mat-tab label="Following">
+          <div class="bs-callout bs-callout-danger">
+            <div class="row">
+              <div class="pets-container">
+                <ul *ngIf="isVisiting? visitedProfile.following.length > 0 : currentUser.following.length > 0">
+                  <li *ngFor="let user of isVisiting ? visitedProfile.following : currentUser.following">
+                    <div class="pet-container">
+                      <figure class="friend-image">
+                        <img class="img-circle img-responsive" alt="" src="{{user.picture}}" (click)="goToProfile(user._id)">
+                      </figure>
+                      <ul class="list-group pet-details">
+                        <li class="list-group-item">{{user.firstName}}</li>
+                        <li class="list-group-item">{{user.lastName}}</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
       </mat-tab-group>
 
     </div>
