@@ -31,8 +31,9 @@
   margin-left: 5px;
 }
 
-.pet-image {
+.friend-image {
   width: 100px;
+  cursor: pointer;
 }
 
 /****** Searchable container */
@@ -593,4 +594,18 @@ mat-tab-group{
   background-color: #3b5998;
 }
 
+
+.follow-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: auto;
+  border: none;
+  cursor: pointer;
+  width: 80%;
+}
+
+follow-button {
+  opacity: 0.8;
+}
 /**** resume ****/

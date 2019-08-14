@@ -14,7 +14,7 @@ export class User {
   firstName?: string;
   lastName?: string;
   pets?: Pet[];
-  friends?: User[];
+  following?: User[];
   email?: string;
   age?: string;
   picture?: string;
@@ -65,7 +65,16 @@ export class UserService {
   }
 
   deletePetFromUser(userId: string, petId: string) {
-    return this.http.delete<any>(this.usersUrl + '/user/' + userId + '/pet/' + petId );
+    return this.http.delete<any>(this.usersUrl + '/user/' + userId + '/pet/' + petId);
+  }
+
+  updateUser(user: User) {
+    const body = JSON.stringify(user);
+    return this.http.put<any>(this.usersUrl + '/' + user._id, body, httpOptions);
+  }
+
+  unfollowUser(userId: string, userIdToUnfollow: string) {
+    return this.http.delete<any>(this.usersUrl + '/user/' + userId + '/userToUnfollow/' + userIdToUnfollow);
   }
 
   getUserByAutoComplete(nameToSearch) {

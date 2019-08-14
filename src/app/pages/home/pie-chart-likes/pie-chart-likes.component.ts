@@ -53,7 +53,7 @@ export class PieChartLikesComponent implements AfterViewInit {
 
   private buildPie(): void {
     const pie = D3.layout.pie();
-    const values = this.pieData.map(data => data.currentPopulation);
+    const values = this.pieData.map(data => data.likes);
     const arcSelection = this.svg.selectAll('.arc')
       .data(pie(values))
       .enter()

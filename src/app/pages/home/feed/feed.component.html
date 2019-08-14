@@ -51,7 +51,7 @@
       <div *ngIf="post.type == 'post'">
         <mat-card-header>
           <div mat-card-avatar [ngStyle]="{'background-image': 'url('+post.userImage+')'}"
-               class="example-header-image" (click)="visitToProfile(post.userId)"></div>
+               class="example-header-image-profile" (click)="visitToProfile(post.userId)"></div>
           <mat-card-title class="title">{{post.username}}</mat-card-title>
           <mat-card-subtitle>{{post.timestamp.slice(0, -8).replace('T',' ')}}</mat-card-subtitle>
         </mat-card-header>
