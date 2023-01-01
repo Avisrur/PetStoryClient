@@ -14,7 +14,7 @@
   "dependencies": {
     "@3846masa/axios-cookiejar-support": "^0.4.2",
     "@agm/core": "^1.0.0-beta.7",
-    "@angular-devkit/build-angular": "0.13.4",
+    "@angular-devkit/build-angular": "15.0.4",
     "@angular/animations": "^7.0.3",
     "@angular/cdk": "^7.0.3",
     "@angular/common": "^7.0.0",
